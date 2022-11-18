@@ -1,0 +1,925 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+ 
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Citibank USA</title>
+<style>
+.closebtn {
+   margin-left:15 px;
+   color: white;
+   font-weight: bold;
+   float: right;
+   font-size: 22px;
+   line-height: 20px;
+   cursor: pointer;
+   transition: 0.3s;
+}
+
+.closebtn:hover { 
+color: black;
+}
+
+.alert
+{
+padding: 20px;
+background-color:#008000;
+text-align: center;
+color:#ffffff;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="/cssfiles/uv1login-style.css"/>
+<script src="/jsfiles/userlogin.js" type="text/javascript"></script>
+<script src="/jsfiles/usertooltip.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/e2ebnlib.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/e2eprng4.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/e2erng.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/e2ersa.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/e2ehx264.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/sadcmamt.js"></script>
+<script language="JavaScript" type="text/javascript" src="/jsfiles/transmit.js"></script>
+
+<script type="text/javascript">
+citi.profile("content22.citibank.co.in","5i4u0rke","46A08BDC-D7D3-4735-A2E1-08BC05651694");
+</script>
+
+
+</head>
+
+<script  type="text/javascript">
+	var svpin=0;
+
+	function writePwd(s){
+		
+		if( ((document.frmLogin.password[1].value).length >= 0 ) && ((document.frmLogin.password[1].value).length <= 15) ) {
+			document.frmLogin.password[1].value=document.frmLogin.password[1].value+s;			
+			testPassword3();
+			
+		}else{
+			return false;
+		}
+	}
+
+	function clearAll()     {
+		document.frmLogin.password[1].value="";
+		testPassword3();
+	}
+
+	function backSpacer(){
+		document.frmLogin.password[1].value=document.frmLogin.password[1].value.substr(0,document.frmLogin.password[1].value.length-1);
+		testPassword3();
+	}
+ 
+	function setCookiesecure (name,value,expires,path,domain,secure) {
+		document.cookie = name + "=" + value + ((expires) ? "; expires=" + expires : "") + ((path) ? ";path=" + path : "") + ((domain) ? "; domain=" +domain :"") + ((secure) ? "; secure" : "");
+	}
+
+	function popitup(url) {
+		newwindow=window.open(url,'verisigncertificate','width=530,height=480');
+	} 
+
+	var dROffer ='PAYCCBILL';
+
+	function changePin(pin){
+		document.frmLogin.Pin_Id.value = pin;
+		document.frmLogin.passpin.value=pin;
+		if("H" != pin){
+			document.forms[0].action="/ibank/login/IQPin1.jsp";
+			document.forms[0].method="post";
+			document.forms[0].submit();
+		}
+	}
+
+
+	var IE=(document.all)?1:0;
+	var NS4 = (document.layers)? true : false;
+	var NS6 = (document.getElementById&&!document.all) ? true : false;
+	var Opt = new Object();
+	var newWin = null;
+
+	function winClose() {
+		if(newWin!=null)
+			newWin.close();
+	}
+
+
+
+	function iqpinwin(message){
+		var autoclose = true;
+		newWin = open("","Test","scrollbar=no,height=200,width=400,left=200,top=200");
+		newWin.document.open();
+		newWin.document.write("<html><head><title>Citibank Online</title><meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'><link rel='stylesheet' href=/cssfiles/copy.css ></head>");
+		newWin.document.write("<body onBlur='window.focus()' bgcolor='#FFFFFF' text='#000000' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0' background=/IbsImages/bgpop.gif>");
+		newWin.document.write("<form name='frmError' method='post' action=''>");
+		newWin.document.write("<table width='350' border='0' cellspacing='0' cellpadding='0'>");
+		newWin.document.write("<tr><td width='45' height='30'>&nbsp;</td><td width='124'>&nbsp;</td><td width='180'>&nbsp;</td></tr>");
+		newWin.document.write("<tr><td colspan='3' class='ar'><blockquote><p>" + message + "</p></blockquote></td></tr>");
+		newWin.document.write("<tr align='right'><td colspan='3' class='ar1'><a href='javascript:window.close()'>Close this window</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>");
+		newWin.document.write("<tr><td>&nbsp;</td><td colspan='2'>&nbsp;</td></tr>");
+		newWin.document.write("<tr><td>&nbsp;</td><td colspan='2'>&nbsp;</td></tr>");
+		newWin.document.write("<tr><td>&nbsp;</td><td colspan='2'>&nbsp;</td></tr>");
+		newWin.document.write("<tr><td>&nbsp;</td><td colspan='2'>&nbsp;</td></tr>");
+		newWin.document.write("</table></form></body></html>");
+		newWin.document.close();
+	}
+
+	function hide() {
+		if(IE){
+			document.getElementById('disp1').style.display = 'none';
+		} else if(NS4) {
+			document.layers["disp1"].visibility="hide";
+		} else if (NS6) {
+			document.getElementById("disp1").style.visibility="hidden";
+		}
+	}
+
+	function getCookie1( name ){
+		var start = document.cookie.indexOf( name + "=" );
+		var len = start + name.length + 1;
+		if ( ( !start ) && ( name != document.cookie.substring( 0, name.length ) ) ) { return null; }
+		if ( start == -1 ) return null;
+		var end = document.cookie.indexOf( ";", len ); 
+		if ( end == -1 ) end = document.cookie.length;
+		return unescape( document.cookie.substring( len, end ) );
+	}
+
+
+	function getCookie(c_name) {
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for (i=0;i<ARRcookies.length;i++)	{
+			x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+			y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+			x=x.replace(/^\s+|\s+$/g,"");
+			if (x==c_name){
+				return unescape(y);
+			}
+		}
+	}
+ 
+	function checkCookie1()
+	{
+		var ck=unescape(document.cookie);
+		var username=getCookie("UserId");
+		if (username!=null && username!="")
+		{  
+			return unescape("yes");
+		}
+		else
+		{
+		}
+	}
+ 
+	function  loadValue(){
+	var saddeviceid=encode_deviceprint();
+	document.forms[0].saddeviceid.value=saddeviceid;
+
+		if ( self == top ) {
+		document.getElementById('cbolerrorpage').style.display='none';
+		document.getElementById('cbolrealpage').style.visibility='visible';
+	} else {
+		top.location=self.location;
+	}
+
+
+		showhideKeyBoardsv1('1');
+		document.getElementById("psdisp2").style.display = 'none';
+		document.getElementById("psdisp3").style.display = 'none';
+
+var username=getCookie("REMUSERID");
+
+if (username!=null && username!="")
+  {  
+	document.frmLogin.User_Id.value=username;
+  }
+ 	
+        directloginerr();
+	}     
+		
+	
+
+	function directloginerr(){
+		var name=window.opener;
+		if (navigator.userAgent.match('CriOS') &&(window.localStorage))
+		{
+			try{
+			var name1=localStorage.getItem("windowname");
+			if(name1==null && dROffer==""){
+			document.forms[0].action="/infojsp/login/directloginerr.htm"
+			document.forms[0].submit();
+			}
+			}catch(err){}
+
+		} else if(name==null && dROffer==""){
+			document.forms[0].action="/infojsp/login/directloginerr.htm"
+			document.forms[0].submit()
+		}
+	}
+
+	function showhideKeyBoardsv1(val){
+		if(val == 1){
+			if("H" == "H"){
+				document.forms[0].cPin_Id[0].checked=true;
+			}else{
+				document.forms[0].cPin_Id[1].checked=true;
+			}
+			document.getElementById("withKeyboard").style.display = "none";
+			document.getElementById("withoutKeyboard").style.display = "inline";
+			document.getElementById("skImg").src = '/IbsImages/uv1_ls_skp_h1.gif';
+			document.getElementById("vkImg").src = '/IbsImages/uv1_ls_vkp_n1.gif';
+			svpin =0;
+		}
+		else if(val == 2)
+		{
+			if("H" == "H"){
+				document.forms[0].cPin_Id[2].checked=true;
+			}else{
+				document.forms[0].cPin_Id[3].checked=true;
+			}
+			document.getElementById("withKeyboard").style.display = "inline";
+			document.getElementById("withoutKeyboard").style.display = "none";
+			document.getElementById("skImg").src = '/IbsImages/uv1_ls_skp_n1.gif';
+			document.getElementById("vkImg").src = '/IbsImages/uv1_ls_vkp_h1.gif';
+			svpin =1;
+		}
+	}
+
+	function trimrs (str) {
+		str = str.replace(/^\s+/, '');
+		for (var i = str.length - 1; i >= 0; i--) {
+			if (/\S/.test(str.charAt(i))) {
+				str = str.substring(0, i + 1);
+				break;
+			}
+		}
+		return str;
+	}
+
+	var hitcnt=0;
+
+
+	
+function testPassword3()
+{
+
+	if(document.forms[0].User_Id.value==null || document.forms[0].User_Id.value == "") {
+			iqpinwin("Please enter your userid .","../");
+			return ;
+		}
+		var temp1 = new String(document.forms[0].User_Id.value);
+		var temp2 = new String(document.forms[0].User_Id.value);
+		temp1 = temp1.replace(/[^a-zA-Z 0-9]+/g,'');  
+		uid = temp1;
+		var numregEx1=new RegExp("^[0-9]*$");
+		var alpharegEx1=new RegExp("^[a-zA-Z]*$");
+		if(numregEx1.test(uid)){
+			iqpinwin("Please enter your valid userid ");
+			return ;
+		}
+
+	
+var passwd =  document.forms[0].password[svpin].value;
+}
+
+
+	function validate(){
+		if(document.forms[0].User_Id.value==null || document.forms[0].User_Id.value == "") {
+			iqpinwin("Please enter your userid .","../");
+			return ;
+		}
+		var temp = new String(document.forms[0].User_Id.value);   
+		temp = temp.replace(/[^a-zA-Z 0-9]+/g,'');  
+		uid = temp;
+		var numregEx=new RegExp("^[0-9]*$");
+		var alpharegEx=new RegExp("^[a-zA-Z]*$");
+		if(numregEx.test(uid)){
+			iqpinwin("Please enter your valid userid ");
+			return ;
+		}
+		var Pin_Id_length = document.forms[0].cPin_Id.length;
+		for(var i=0;i<Pin_Id_length;i++){
+			if( document.forms[0].cPin_Id[i].checked){
+				document.forms[0].passpin.value = document.forms[0].cPin_Id[i].value;
+				document.forms[0].Pin_Id.value = document.forms[0].cPin_Id[i].value;
+			}
+		}
+		document.forms[0].PassWd.value=document.forms[0].password[svpin].value;
+		if(document.forms[0].Pin_Id.value==null || document.forms[0].Pin_Id.value == "") {
+			iqpinwin("Please choose the pin type to login .","../");
+			return ;
+		}
+		if(document.forms[0].PassWd.value==null || document.forms[0].PassWd.value == "") {
+			iqpinwin("Please enter your internet password .","../");
+			return ;
+		}
+		if ((document.forms[0].PassWd.value != null ) && ((document.forms[0].PassWd.value).length > 16) ) {
+			iqpinwin("Your internet password should not exceed 16 characters.","../");
+			return ;
+		}
+
+var	rmflag = "N";
+
+if(rmflag=="Y")
+		{
+if((document.forms[0].remember.checked == false) )
+{   
+	document.forms[0].remuserid.value = "N";
+}else if((document.forms[0].remember.checked == true) ){
+	document.forms[0].remuserid.value = "Y";
+}
+		
+		}
+
+		var rsa = new RSAKey();
+		var mod1 = "8f01210fe17bd2e2fda7bfd6d73cc93ecb3d4a521943a7b71ab3643997481dc7838eb594e06f0cb45e12ccd2317500fb593a09820cd54275ab78954c87ef0f64ce3bb29af272f7505983386e057a26b8fcc57e6cb2dc98aadf75401333ecf6692f985f3f4ca1dd2b98ddee5b4591efd4c85041a3b6d0c7dd570004ff98e48e7a54f668a60041777a23a860adabae7f1526d2193afd7db603c0142e59f664294079154fc14df7836400dbf4a36470f70d0930f57a9947d1091772f9b737ef521caa1fa5262cb7e5eb0a0913ddb873d728094e4aba50e0a031855526441b25ab38b0ccc71923e5cb7b1d7b2e162aa749f67605b43b66c85652550cab37fc9be4bb";
+		var expo1 = "010001";
+		var eee = "Y";
+		if(eee=="Y"){
+			rsa.setPublic(mod1, expo1);
+			var pwd = document.forms[0].PassWd.value; 
+			if(pwd.length<16){	   
+				aString = new String("16");	
+				answer = aString - pwd.length;  
+				var sr = " ";
+				var cnt ;
+				for (var i = 0; i < answer; i++) {				 
+					var rsr =  pwd.concat(sr);
+					pwd =rsr;			
+				}		
+			}
+			var res = rsa.encrypt(pwd); 
+			if(res) {	
+				document.forms[0].password[svpin].value =res;
+				document.forms[0].PassWd.value=res;	
+			}
+		}
+		hitcnt=hitcnt+1 
+		if(hitcnt==1) 	{
+			document.forms[0].submit();
+		} 
+	}
+
+
+	function PinCheck(selpin){
+		exists=true;
+		if(document.forms[0].passpin.value=="H") exists=true
+		else exists=false;
+		var valtxtUserName = document.frmLogin.User_Id.value;
+		if(exists){
+			if((valtxtUserName.substr(0,6) == "508126") || (valtxtUserName.substr(0,6)=="808126")){                        
+				document.forms[0].passpin.value=="H";
+			}else if(valtxtUserName.substr(0,5) == "77777"){
+				document.forms[0].passpin.value=="H";
+			}else{
+				document.forms[0].passpin.value=selpin;
+			}
+		}
+	}
+
+	function ForgotUserID()
+	{
+		document.forms[0].method="post";
+		document.forms[0].action="/ssjsps/forgetuserid.jsp";
+		document.forms[0].submit();
+	}
+
+	function ForgotPassword()
+	{
+		document.forms[0].method="post";
+		document.forms[0].action="/ssjsps/forgotpin.jsp";
+		document.forms[0].submit();
+	}
+
+	function FirstTimeUser()
+	{
+		document.forms[0].method="post";
+		document.forms[0].action="/ssjsps/ssindex.do";
+		document.forms[0].submit();
+	}
+
+	function genUserId()
+	{
+		document.forms[0].method="post";
+		document.forms[0].action="/ibank/login/IQPin1.jsp";
+		document.forms[0].submit();
+	}
+
+	function convertToUpperCase()
+	{
+		var usid=document.frmLogin.User_Id.value;         
+		document.frmLogin.User_Id.value=usid.toUpperCase();
+	}
+
+	  var toggle = function() {
+  var mydiv = document.getElementById('dhtmltooltip_n');
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block'
+  }
+
+
+	  var toggle1 = function() {
+  var mydiv = document.getElementById('dhtmltooltip_n1');
+  if (mydiv.style.display === 'block' || mydiv.style.display === '')
+    mydiv.style.display = 'none';
+  else
+    mydiv.style.display = 'block'
+  }
+
+</script>
+ 
+
+</script>
+ 
+
+<body onLoad="javascript:loadValue();" onUnload = "javascript:winClose();">
+
+	<form name="frmLogin"   ACTION="/ibank/NewLoginServlet" method="post" AUTOCOMPLETE="OFF"  >
+	
+       <div id="cbolerrorpage">
+	   </div>
+
+
+<div id="cbolrealpage" style="visibility:hidden;">
+<div class="alert">
+<span class="closebtn" onclick="this.parentElement.style.display='none';">&times
+</span>
+For your security,ensure that you can view the padlock symbol
+<span>
+<img src="/IbsImages/bnr-lock.png">
+</span>
+and Citigroup Inc.[US] on the web address before you sign on.
+</div>
+
+<!-- main page start -->
+<div id="main-wrapper">
+	<!-- inner page start -->
+	<div class="inner">
+		
+		<!-- header area start -->
+		<div class="header_area">
+			<div class="citi_india_logo"></div>
+			<div class="citi_logo"></div>
+		</div>
+	<!-- header area end -->
+
+		<!-- selfselect_section start -->
+		<div class="ls_sec">
+			<div class="ls_sec_top"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+			<!-- center centent area start -->
+			<div class="ls_sec_cen">
+				<div class="con_le">
+					<div class="cl con_le">
+						<div class="intr_sec1">
+							<h1>Welcome to Citibank Online</h1>
+				    	</div>
+						<div class="cl login_sec">
+							<div class="uid">
+								<div class="uid_top"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+								<div class="uid_mid1">
+            <div class="bold"> Enter your User ID using standard keyboard</div>
+									<div class="pt10 fl pb5 width460">
+										<div class="fl width15 pt3"><img src="/IbsImages/uv1_ls_uid_dot.gif" width="7" height="13" /></div>
+										<div class="fl width189"><input type="text" name="User_Id" id="User_Id" class="txt_fld_uid_175" maxlength=50  onkeyup="javascript:convertToUpperCase()" onkeyPress="javascript:convertToUpperCase()" onPaste = "return false;" /></div>
+										<div class="fl pl12 pr10"><img src="/IbsImages/uv1_ls_uid_bit.gif" width="1" height="21" /></div>
+										<div class="fl cup pt3" onclick="ForgotUserID();"><img src="/IbsImages/uv1_icon_key.gif" width="16" height="16" align="absmiddle" /> Forgot User ID? </div>
+										
+									</div>
+								 
+								 
+							  
+
+								</div>
+
+								<div class="uid_bot"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+							</div>
+							<div class="cl fl kpad">
+							<div class="kpad_top">
+								<div class="fl cup" onclick="return showhideKeyBoardsv1('2')" style="position:relative"><div style="position:absolute; left:165px; top:10px;"><img src="/IbsImages/uv1_spacer.gif" width="20" height="20" onmouseover="ddrivetip('Why use virtual keyboard login? The virtual keyboard with its dynamic keys minimises the risk of malicious codes capturing your keystrokes. Use virtual keyboard and enjoy the convenience of online banking with complete security.')"; onmouseout="hideddrivetip()"/></div><img src="/IbsImages/uv1_ls_vkp_h1.gif" alt="Login using virtual keypad" name="vkImg" width="199" height="35" id="vkImg" title="Login using virtual keypad"/></div>
+								<div class="fl cup" onclick="return showhideKeyBoardsv1('1')"><img src="/IbsImages/uv1_ls_skp_n1.gif" alt="Enter Your Password using standard keyboard" name="skImg" width="286" height="35" id="skImg" title="Enter Your Password using standard keyboard" /></div>
+							</div>
+							<div class="cl fl">
+								<div class="cl fl" id="withoutKeyboard" style="display:none">
+									<div class="kpad_mid_sk" >
+										<div class="fl width342 pt8 cfff">
+											<div class="fl"><input name="cPin_Id" type="radio" value="H"  onclick="javascript:changePin('H'); return false;   "></div>
+											<div class="fl pt2_ie pt3 pl3 pr5 "><span class="fnt12">IPIN</span> (Internet Password) </div>
+											<div class="fl pl3"><input name="cPin_Id" type="radio" value="Q" onclick="javascript:changePin('Q'); return false;" ></div>
+											<div class="fl pt2_ie pl3 pt3"><span class="fnt12">QPIN</span> (Query Password)</div>
+										</div>
+										<div class="pt5 fl pb25 width460">
+											<div class="fl width15 pt8"><img src="/IbsImages/uv1_ls_uid_dot.gif" width="7" height="13" /></div>
+											<div class="fl width189 pt5"><input type="password" name="password" id="password" class="txt_fld_uid_175" onKeyUp="testPassword3(1);"/></div>
+										
+
+
+
+
+
+
+
+	<div class="fl pr10 pt3"><img src="/IbsImages/uv1_ls_uid_bit.gif" width="1" height="21" /></div>
+											<div class="fl width122" id="passstrk" style="display:">
+											                             
+												<div class="fl width110">
+													<table width="110" border="0" cellspacing="0" cellpadding="0">
+
+													
+
+
+			<tr>
+    <td height="30" valign="middle" >
+	<div id="psdisp2" style="display:block">
+	
+	<div style="position:relative">
+      <div id="dhtmltooltip_n">If your IPIN (Internet Password) is <font color=red><b> Weak</b> </font> , you will need to change your IPIN immediately. <br /> If your IPIN is <font color=green><b> Strong</b> </font>, you can continue using the same IPIN. <br /> To proceed, click on "Login" button below.</div></div>
+     <div class="fl width110 fnt10w" >Password Strength <span style="cursor:pointer" onclick="toggle();"><img src="/IbsImages/uv1_tip.gif" width="16" height="16" border="0" align="top"/></span></div>
+	
+	</div>
+	<div id="ps2"></div>
+    </td>
+  </tr>
+
+
+														
+
+													</table>
+												</div>
+
+
+
+												<div class="fl pr10 pt3"><img src="/IbsImages/uv1_ls_uid_bit.gif" width="1" height="21" /></div>
+											</div>
+												
+                  <div class="fl cup pt3" onclick="ForgotPassword();"><img src="/IbsImages/uv1_icon_key.gif" width="16" height="16" align="absmiddle"/> Forgot IPIN? </div>
+				  
+										</div>
+									</div>
+									<div class="kpad_bot_sk"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+								</div>
+								<div class="cl fl" id="withKeyboard" style="display:block">
+									<div class="kpad_mid_vk">
+										<div class="cl">
+											<div class="fl width342 pt8 cfff">
+												<div class="fl"><input name="cPin_Id" type="radio" value="H"  onclick="javascript:changePin('H'); return false; "  ></div>
+												<div class="fl pt2_ie pt3 pl3 pr5 "><span class="fnt12">IPIN</span> (Internet Password) </div>
+												<div class="fl pl3"><input name="cPin_Id" type="radio" value="Q" onclick=  "javascript:changePin('Q'); return false;" >
+												</div>
+												<div class="fl pt2_ie pl3 pt3"><span class="fnt12">QPIN</span> (Query Password)</div>
+											</div>
+										<div class="pt5 fl pb5 width460">
+											<div class="fl width15 pt8"><img src="/IbsImages/uv1_ls_uid_dot.gif" width="7" height="13" /></div>
+											<div class="fl width189 pt5 pb10"><input type="password" name="password" id="password" class="txt_fld_uid_175"  readonly="true" onKeyUp="testPassword3();"/></div>
+
+
+											<div class="fl pr10 pt3"><img src="/IbsImages/uv1_ls_uid_bit.gif" width="1" height="21" /></div>
+											<div class="fl width122" id="passstrk" style="display:">
+												<div class="fl width110">
+													<table width="110" border="0" cellspacing="0" cellpadding="0">
+													
+														
+
+
+
+
+														<tr>
+    <td height="30" valign="middle" > 
+	<div id="psdisp3" style="display:block">
+	<div style="position:relative">
+      <div id="dhtmltooltip_n1">If your IPIN (Internet Password) is <font color=red><b> Weak</b> </font> , you will need to change your IPIN immediately. <br /> If your IPIN is <font color=green><b> Strong</b> </font>, you can continue using the same IPIN. <br /> To proceed, click on "Login" button below.</div></div>
+     <div class="fl width110 fnt10w" >Password Strength <span style="cursor:pointer" onclick="toggle1();"><img src="/IbsImages/uv1_tip.gif" width="16" height="16" border="0" align="top"/></span></div>
+	</div>
+	<div id="ps3"></div>
+    </td>
+  </tr>
+
+														
+													</table>
+												</div>
+						
+
+					<div class="fl pr10 pt3"><img src="/IbsImages/uv1_ls_uid_bit.gif" width="1" height="21" /></div>
+										</div>
+											
+            <div class="fl cup pt3" onclick="ForgotPassword();"><img src="/IbsImages/uv1_icon_key.gif" width="16" height="16" align="absmiddle"/> Forgot IPIN?  </div>
+			
+									</div>
+									<div class="key">
+										<div class="key_top"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+										<div class="key_mid">
+											<div class="cl fl width282">
+<div class="c1 keyboard-box1">
+<SCRIPT LANGUAGE="JavaScript">
+var numArray;
+var imgArray;
+
+numArray=new Array(0,1,2,3,4,5,6,7,8,9);
+imgArray=new Array(203,111,88,66,180,20,157,43,226,134);
+var tempnumArray=new Array();
+var numcount=numArray.length;
+var numChar="";
+for (i=0;i<numcount;i++){
+var now = new Date();
+var secs = now.getSeconds();
+rnd = Math.random(secs);
+rnd = Math.round(rnd * (numArray.length));
+if (rnd == numArray.length){rnd = 0}
+tempnumArray[i]=numArray[rnd];
+numChar+=tempnumArray[i]+", ";
+removenumChar(rnd);
+}
+numArray=tempnumArray;
+
+function removenumChar(id){
+var temp=new Array();
+for (j=0;j<numArray.length;j++){
+if(id!=j){
+temp[temp.length]=numArray[j];
+}
+}
+numArray=temp;
+}
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[0]]+'px -220px" onclick="javascript:writePwd('+numArray[0]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[1]]+'px -220px" onclick="javascript:writePwd('+numArray[1]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[2]]+'px -220px" onclick="javascript:writePwd('+numArray[2]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[3]]+'px -220px" onclick="javascript:writePwd('+numArray[3]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[4]]+'px -220px" onclick="javascript:writePwd('+numArray[4]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[5]]+'px -220px" onclick="javascript:writePwd('+numArray[5]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[6]]+'px -220px" onclick="javascript:writePwd('+numArray[6]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[7]]+'px -220px" onclick="javascript:writePwd('+numArray[7]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[8]]+'px -220px" onclick="javascript:writePwd('+numArray[8]+');"></div>');
+document.write('<div class="keyboard-btn" style="background-position:-'+imgArray[numArray[9]]+'px -220px" onclick="javascript:writePwd('+numArray[9]+');"></div>');
+</SCRIPT>
+
+
+</div>
+
+<div class="keyboard-box2">
+<div class="keyboard-btn" style="background-position:0px -241px" onclick="writePwd('~')"></div>
+<div class="keyboard-btn" style="background-position:-23px -241px" onclick="writePwd('`')"></div>
+<div class="keyboard-btn" style="background-position:-46px -241px" onclick="writePwd('!')"></div>
+<div class="keyboard-btn" style="background-position:-68px -241px" onclick="writePwd('@')"></div>
+<div class="keyboard-btn" style="background-position:-92px -241px" onclick="writePwd('#')"></div>
+<div class="keyboard-btn" style="background-position:-115px -241px" onclick="writePwd('$')"></div>
+<div class="keyboard-btn" style="background-position:-138px -241px" onclick="writePwd('%')"></div>
+<div class="keyboard-btn" style="background-position:-161px -241px" onclick="writePwd('^')"></div>
+<div class="keyboard-btn" style="background-position:-184px -241px" onclick="writePwd('&')"></div>
+<div class="keyboard-btn" style="background-position:-207px -241px" onclick="writePwd('*')"></div>
+<div class="keyboard-btn" style="background-position:-230px -241px" onclick="writePwd('(')"></div>
+<div class="keyboard-btn" style="background-position:-253px -241px" onclick="writePwd(')')"></div>
+</div> 
+<div class="cl keyboard-box3">
+<div class="keyboard-btn" style="background-position:0px -263px"   onclick="writePwd('-')" ></div>   
+<div class="keyboard-btn" style="background-position:-23px -263px" onclick="writePwd('_')" ></div>   
+<div class="keyboard-btn" style="background-position:-46px -263px" onclick="writePwd('+')" ></div>   
+<div class="keyboard-btn" style="background-position:-69px -263px" onclick="writePwd('=')" ></div>   
+<div class="keyboard-btn" style="background-position:-91px -263px" onclick="writePwd('{')" ></div>   
+<div class="keyboard-btn" style="background-position:-115px -263px"     onclick="writePwd('}')" ></div>   
+<div class="keyboard-btn" style="background-position:-138px -263px"     onclick="writePwd('[')" ></div>   
+<div class="keyboard-btn" style="background-position:-161px -263px" onclick="writePwd(']')" ></div>   
+<div class="keyboard-btn" style="background-position:-184px -263px"     onclick="writePwd(':')" ></div>   
+<div class="keyboard-btn" style="background-position:-207px -263px"     onclick="writePwd(';')" ></div>   
+<div class="keyboard-btn" style="background-position:-230px -263px"     onclick="writePwd('\'')"></div>   
+
+</div>
+
+
+<div class="c1 keyboard-box4">
+<div class="keyboard-btn" style="background-position:-0px -287px" onclick="writePwd('?')" ></div>
+<div class="keyboard-btn" style="background-position:-23px -287px"      onclick="writePwd('/')" ></div>
+<div class="keyboard-btn" style="background-position:-46px -287px"      onclick="writePwd('>')" ></div>
+<div class="keyboard-btn" style="background-position:-69px -287px"      onclick="writePwd('.')" ></div>
+<div class="keyboard-btn" style="background-position:-91px -287px"      onclick="writePwd('<')" ></div>
+<div class="keyboard-btn" style="background-position:-115px -287px"     onclick="writePwd(',')" ></div>
+<div class="keyboard-btn" style="background-position:-138px -287px" onclick="writePwd('|')" ></div>
+<div class="keyboard-btn" style="background-position:-161px -287px" onclick="writePwd('\\')"></div>
+<div class="keyboard-btn" style="background-position:-184px -287px; width:45px" onclick="backSpacer()"></div>
+<div class="keyboard-btn" style="background-position:-230px -287px; width:41px" onclick="clearAll()"></div>
+</div>
+
+
+<div class="c1 keyboard-box5">
+<div class="keyboard-btn" style="background-position:-23px -310px" onclick="writePwd('q')"></div>
+<div class="keyboard-btn" style="background-position:-46px -310px" onclick="writePwd('w')"></div>
+<div class="keyboard-btn" style="background-position:-69px -310px" onclick="writePwd('e')"></div>
+<div class="keyboard-btn" style="background-position:-91px -310px" onclick="writePwd('r')"></div>
+<div class="keyboard-btn" style="background-position:-115px -310px" onclick="writePwd('t')"></div>
+<div class="keyboard-btn" style="background-position:-138px -310px" onclick="writePwd('y')"></div>
+<div class="keyboard-btn" style="background-position:-161px -310px" onclick="writePwd('u')"></div>
+<div class="keyboard-btn" style="background-position:-184px -310px" onclick="writePwd('i')"></div>
+<div class="keyboard-btn" style="background-position:-207px -310px" onclick="writePwd('o')"></div>
+<div class="keyboard-btn" style="background-position:-230px -310px" onclick="writePwd('p')"></div>
+</div>
+<div class="c1 keyboard-box6">
+<div class="keyboard-btn" style="background-position:-36px -333px"  onclick="writePwd('a')"></div>
+<div class="keyboard-btn" style="background-position:-59px -333px"  onclick="writePwd('s')"></div>
+<div class="keyboard-btn" style="background-position:-82px -333px"  onclick="writePwd('d')"></div>
+<div class="keyboard-btn" style="background-position:-105px -333px" onclick="writePwd('f')"></div>
+<div class="keyboard-btn" style="background-position:-128px -333px" onclick="writePwd('g')"></div>
+<div class="keyboard-btn" style="background-position:-152px -333px" onclick="writePwd('h')"></div>
+<div class="keyboard-btn" style="background-position:-175px -333px" onclick="writePwd('j')"></div>
+<div class="keyboard-btn" style="background-position:-198px -333px" onclick="writePwd('k')"></div>
+<div class="keyboard-btn" style="background-position:-221px -333px" onclick="writePwd('l')"></div>
+</div>
+<div class="keyboard-box7">
+<div class="keyboard-btn" style="background-position:-59px -355px" onclick="writePwd('z')"></div>
+<div class="keyboard-btn" style="background-position:-82px -355px" onclick="writePwd('x')"></div>
+<div class="keyboard-btn" style="background-position:-105px -355px"onclick="writePwd('c')"></div>
+<div class="keyboard-btn" style="background-position:-128px -355px" onclick="writePwd('v')"></div>
+<div class="keyboard-btn" style="background-position:-151px -355px" onclick="writePwd('b')"></div>
+<div class="keyboard-btn" style="background-position:-174px -355px" onclick="writePwd('n')"></div>
+<div class="keyboard-btn" style="background-position:-197px -355px" onclick="writePwd('m')"></div>
+</div>
+
+											
+											</div>
+										</div>
+										<div class="key_bot"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+									</div>
+								</div>
+							</div>
+							<div class="kpad_bot_vk"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" /></div>
+						</div>
+					</div>
+				</div>
+			 
+                    <div class="cl"><div class="cl fl width342 pb30">
+
+                <a href="/infojsp/GenException/enablescript.htm" onclick="javascript:validate(); return false;"><div class="cl fl ls_login"> </div></a> 
+
+                <div class="fl pl10 width110 pt2 c0187cd">Trouble logging in?<br />
+								 
+				 <span><a href="/ssjsps/retrievelogin.jsp">Click here!</a></span>
+
+				</div>
+                </div></div>
+			</div>
+		</div>
+	</div>
+	<div class="con_ri_m">
+		<div class="con_ri" style="position:relative;">
+    <div style="position:absolute; background:url(/IbsImages/uv1_ls_rig_bg.gif) no-repeat left top; background-color:#fff; left:0px; top: 0px; height:500px; width:30px;"></div>
+<div class="fl width354" style="background-color:#e2f4fe">
+<a href="http://www.online.citibank.co.in/products-services/online-services/cbol-flash/demo.html" target="_blank" > <div class="ls_vonlinedemo" title="View Online Demo"></div>  </a> </div>
+			<div class="cl fl width354 pt13" style="background-color:#e2f4fe">
+				<div class="ls_guid"></div>
+				<div class="fl">
+		  <div class="fnt18 c0187cd bold cup" onclick="location.href='/ibank/login/IQPin_uid.jsp';">Get User ID <br />with existing IPIN >> </div>
+          <p class=" pt6" style=" padding-bottom:20px; *padding-bottom:22px">30 seconds is all it takes. Enter your <br />Account details and IPIN and create <br />a User ID of your choice.</p>
+				</div>
+			</div>
+			<div class="gr_ln"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" alt=""/></div>
+			<div class="cl fl pt25 pb6 width354" style="*padding-bottom:10px; background-color:#e2f4fe">
+				<div class="ls_ftu"></div>
+				<div class="fl">
+          <div class="fnt18 c0187cd bold cup" onclick="FirstTimeUser();">First Time User >></div>
+          <p class=" pt6" style="padding-bottom:30px; *padding-bottom:27px">Create User ID and IPIN<br /> completely online.</p>
+				</div>
+			</div>
+			<div class="gr_ln"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" alt=""/></div>
+			<div class="cl fl pt25 pb6 width354" style="*padding-bottom:10px; background-color:#fefefe;  _background-color:#f0efef">
+				<div class="ls_stip"></div>
+				<div class="fl">
+          <div class="fnt18 c004385 bold cup">Important Information</div>
+          <p class=" pt6" style="padding-bottom:10px; *padding-bottom:17px">Important information regarding your <br />online banking security.</p>          
+		  <div class="lnk_g" style="padding-bottom:10px; *padding-bottom:0px"><a href="https://www.online.citibank.co.in/products-services/online-services/online-security.htm" target="_blank" class="lnk_g" style="color: #349901;font-size:12px; font-weight:bold">Know more >></a></div>
+				</div>
+			</div>
+			<div class="gr_ln"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" alt=""/></div>
+		</div>
+	</div>
+</div>
+<!-- center centent area end -->
+
+<!-- bottom img start-->
+
+ 
+
+<div class="cl ls_sec_bot">
+<img src="/IbsImages/uv1_spacer.gif" width="1" height="1" />
+<div class="fl"> 
+<div class="cl ls_vslogo" onclick="return popitup('https://sealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=WWW.ONLINE.CITIBANK.CO.IN&lang=en')">
+</div>
+</div>
+
+
+
+<!-- bottom img end-->
+</div>
+<div class="cl">
+<div class="ls_iminfsec">
+<div class="col1">
+    <div class="cl fl fnt11 bold cc90004">Important Information</div>
+<ul class="iminfsec10">
+          <li>Never disclose your User ID or IPIN (Internet Password) to anyone</li>
+          <li>Change your IPIN (Internet Password) periodically</li>
+          <li>Always type the URL www.citibank.com/india or www.citibank.co.in into your web browser to login</li>
+          <li>Citibank will never request for your IPIN, OTP or any personal information on emails or pop-ups</li>
+          <li>We remind you to update your anti-virus software with the latest virus signatures></li>
+          <li>Do a full virus scan before using any online banking service if you suspect your computer is affected</li>
+           <li>If you suspect fraudulent activity in your account call <a href="http://www.online.citibank.co.in/customerservice/citiphone.htm" target="_blank" >24x7 CitiPhone</a> immediately</li>
+</ul> 
+</div>
+<div class="col2">
+    <div class="cl fl bold cc90004">Do More</div>
+<ul class="iminfsec11">
+          <li>Access all your accounts with<br />a single login</li>
+          <li>Update your mailing address online</li>
+</ul>
+     <div class="cl fl bold cc90004 pt20">Read More on:</div>
+<ul class="iminfsec11">
+ 
+ <li><a href="javascript:javascript:void(window.open('https://www.online.citibank.co.in/products-services/online-services/online-frauds.htm','','resizable=yes,scrollbars=yes,width=450,height=450'))">Online identity fraud / phishing</a></li>
+
+<li><a href="javascript:javascript:void(window.open('https://www.online.citibank.co.in/products-services/online-services/stay-safe-online.htm','','resizable=yes,scrollbars=yes,width=450,height=450'))">Security tips</a></li>
+
+<li><a href="javascript:javascript:void(window.open('https://www.online.citibank.co.in/portal/pdf/Citibank-Online.pdf','','resizable=yes,scrollbars=yes,width=450,height=450'))">Internet banking Terms and Conditions</a></li>
+</ul>
+</div>
+<div class="col3">
+    <div class="cl fl bold cc90004">Did you Know?</div>
+<ul class="iminfsec11" style="width:170px">
+          <li>You can pay Insurance<br />premiums online</li>
+          <li>You can pay anyone using<br />Electronic Fund Transfers and<br /> order Demand Drafts online</li>
+          <li>You can pay bills online </li>
+          <li>You can subscribe to and<br />redeem mutual funds online</li>
+</ul>
+</div>
+</div>
+
+</div><div class="gr_ln" style="margin-top:20px"><img src="/IbsImages/uv1_spacer.gif" width="1" height="1" alt=""/></div>
+</div>
+<!-- selfselect_section end -->
+<!-- footer start -->
+<div class="cl footer">
+<!-- footer column 1 start -->
+<div class="fl footer_lef" style="width:70px">
+<div class="footer_lef_img"></div>
+<p class="cl"><a href="http://www.citi.com/domain/home.htm" target="_blank">citibank.com</a></p>
+</div>
+<!-- footer column 1 end -->
+<!-- footer column 2 start -->
+<div class="fl pt5" style="width:400px; text-align:left">
+<p class="cl fnt11">
+
+<a href="https://www.online.citibank.co.in/privacy/privacy.htm" class="fnt11" target="_blank">Citigroup Privacy Promise </a>
+<a href="http://www.online.citibank.co.in/portal/newgen/disclaimer_tc.htm" target="_blank" >Terms,Conditions,Caveats and small print</a>
+
+</p>
+<p class="cl fnt11">Copyright ©  2022, Citicorp</p>
+</div>
+
+<!-- footer column 2 end -->
+</div>
+<!-- footer end -->
+</div>
+<!-- inner page end-->
+</div>
+</div>
+<!-- main page end -->
+</div>
+<input type="hidden" name="usertype" value="GU">
+<input type="hidden" name="usergroup" value="NONPFM">
+<input type="hidden" name="nation" value="IND">
+<input type="hidden" name="lang" value="en">
+<input type="hidden" name="routeLocator" value="INFO">
+<input type="hidden" name="PassWd"  value="">
+<input type="hidden" name="Pin_Id" value="">
+<INPUT TYPE="hidden" NAME="passpin" value="Q">
+<INPUT TYPE="hidden" NAME="browserType" value="">
+<input TYPE="hidden" name="dLEoffers" value='PAYCCBILL'>
+<INPUT TYPE="hidden" NAME="userflag" value="U">
+<INPUT TYPE="hidden" NAME="remuserid" value="">
+<INPUT TYPE="hidden" NAME="saddeviceid" value=''>
+<INPUT TYPE="hidden" NAME="dcardno" value=''>
+<INPUT TYPE="hidden" NAME="damount" value=''>
+<INPUT TYPE="hidden" NAME="ddate" value=''>
+<INPUT TYPE="hidden" NAME="dauthcode" value=''>
+<INPUT TYPE="hidden" NAME="dstatus" value=''>
+<INPUT TYPE="hidden" NAME="drefno" value=''>
+<INPUT TYPE="hidden" NAME="tmxmsgid" value='46A08BDC-D7D3-4735-A2E1-08BC05651694'>
+<INPUT TYPE="hidden" NAME="selectedval" value='null'>
+<INPUT TYPE="hidden" NAME="eOfferCode" value=''>
+<INPUT TYPE="hidden" NAME="PRECONSENTFLAG" value='null'>
+
+
+</form>
+<script type="text/javascript"  src="/gBWqzxnWdpruQ/U2pa/PcRu1KBEXY/uYuc4DrmVuir/PQEuH2M/MBFRa3lj/Uk8B"></script></body>
+</html>
+
+
+
+
+
+
+
+
