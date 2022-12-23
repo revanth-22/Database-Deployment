@@ -2,7 +2,7 @@
 Pipeline {
    agent any
    stages {
-      stage('start') {
+      //stage('start') {
                
        // steps { echo 'pipeline has started'
        //        echo '********************'}
